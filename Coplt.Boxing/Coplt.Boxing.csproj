@@ -1,8 +1,21 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>netstandard2.1</TargetFramework>
+        <TargetFrameworks>net8.0;net9.0</TargetFrameworks>
         <Nullable>enable</Nullable>
+        <LangVersion>13.0</LangVersion>
+        <Version>0.1.0</Version>
+        <IsAotCompatible Condition="$([MSBuild]::IsTargetFrameworkCompatible('$(TargetFramework)', 'net7.0'))">true</IsAotCompatible>
     </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Coplt.Dropping" Version="0.5.1" />
+      <PackageReference Include="Fody" Version="6.9.1">
+        <PrivateAssets>all</PrivateAssets>
+        <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      </PackageReference>
+      <PackageReference Include="InlineIL.Fody" Version="1.10.0" PrivateAssets='All' />
+      <PackageReference Include="System.Runtime.CompilerServices.Unsafe" Version="6.1.0" Condition="!$([MSBuild]::IsTargetFrameworkCompatible('$(TargetFramework)', 'net7.0'))" />
+    </ItemGroup>
 
 </Project>
