@@ -6,16 +6,32 @@
         <LangVersion>13.0</LangVersion>
         <Version>0.1.0</Version>
         <IsAotCompatible Condition="$([MSBuild]::IsTargetFrameworkCompatible('$(TargetFramework)', 'net7.0'))">true</IsAotCompatible>
+        <Description>Utilities related to boxing</Description>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <RepositoryUrl>https://github.com/2A5F/Coplt.Boxing</RepositoryUrl>
+        <PackageProjectUrl>https://github.com/2A5F/Coplt.Boxing</PackageProjectUrl>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
+        <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="Coplt.Dropping" Version="0.5.1" />
-      <PackageReference Include="Fody" Version="6.9.1">
-        <PrivateAssets>all</PrivateAssets>
-        <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-      </PackageReference>
-      <PackageReference Include="InlineIL.Fody" Version="1.10.0" PrivateAssets='All' />
-      <PackageReference Include="System.Runtime.CompilerServices.Unsafe" Version="6.1.0" Condition="!$([MSBuild]::IsTargetFrameworkCompatible('$(TargetFramework)', 'net7.0'))" />
+        <PackageReference Include="Coplt.Dropping" Version="0.5.1"/>
+        <PackageReference Include="Fody" Version="6.9.1">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+        <PackageReference Include="InlineIL.Fody" Version="1.10.0" PrivateAssets='All'/>
+        <PackageReference Include="System.Runtime.CompilerServices.Unsafe" Version="6.1.0" Condition="!$([MSBuild]::IsTargetFrameworkCompatible('$(TargetFramework)', 'net7.0'))"/>
     </ItemGroup>
-
+    
+    <ItemGroup>
+        <None Include="..\LICENSE.md">
+            <Pack>True</Pack>
+            <PackagePath>\</PackagePath>
+        </None>
+        <None Include="..\README.md">
+            <Pack>True</Pack>
+            <PackagePath>\</PackagePath>
+        </None>
+    </ItemGroup>
 </Project>
